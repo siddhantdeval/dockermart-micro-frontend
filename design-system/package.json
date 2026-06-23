@@ -1,0 +1,9 @@
+{
+  "name": "design-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo \"Starting design-system...\"",
+    "build": "echo \"Building design-system...\""
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "catalog-mfe",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo \"Starting catalog...\"",
+    "build": "echo \"Building catalog...\""
+  }
+}

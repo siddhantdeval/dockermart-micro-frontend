@@ -1,0 +1,9 @@
+{
+  "name": "checkout-mfe",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo \"Starting checkout...\"",
+    "build": "echo \"Building checkout...\""
+  }
+}

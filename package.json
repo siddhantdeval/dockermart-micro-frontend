@@ -1,0 +1,13 @@
+{
+  "name": "dockermart-root",
+  "version": "1.0.0",
+  "description": "DockerMart Micro-Frontend Workspace Root",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n shell,catalog,cart,checkout,account,ds -c blue,green,yellow,red,cyan,magenta \"npm run dev --prefix shell\" \"npm run dev --prefix catalog-mfe\" \"npm run dev --prefix cart-mfe\" \"npm run dev --prefix checkout-mfe\" \"npm run dev --prefix account-mfe\" \"npm run dev --prefix design-system\"",
+    "build:all": "npm run build --prefix catalog-mfe && npm run build --prefix cart-mfe && npm run build --prefix checkout-mfe && npm run build --prefix account-mfe && npm run build --prefix design-system && npm run build --prefix shell"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
