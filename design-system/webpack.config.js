@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 
 module.exports = {
@@ -36,6 +37,18 @@ module.exports = {
     ],
   },
   plugins: [
+    new ModuleFederationPlugin({
+      name: 'designSystem',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Button': './src/Button',
+        './GlobalStyles': './src/GlobalStyles',
+      },
+      shared: {
+        react: { singleton: true, eager: false, requiredVersion: '^18.0.0' },
+        'react-dom': { singleton: true, eager: false, requiredVersion: '^18.0.0' },
+      },
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),

@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 
 module.exports = {
@@ -36,6 +37,20 @@ module.exports = {
     ],
   },
   plugins: [
+    new ModuleFederationPlugin({
+      name: 'shell',
+      remotes: {
+        catalogApp: 'catalogApp@http://localhost:3001/remoteEntry.js',
+        cartApp: 'cartApp@http://localhost:3002/remoteEntry.js',
+        checkoutApp: 'checkoutApp@http://localhost:3003/remoteEntry.js',
+        accountApp: 'accountApp@http://localhost:3004/remoteEntry.js',
+        designSystem: 'designSystem@http://localhost:3005/remoteEntry.js',
+      },
+      shared: {
+        react: { singleton: true, eager: false, requiredVersion: '^18.0.0' },
+        'react-dom': { singleton: true, eager: false, requiredVersion: '^18.0.0' },
+      },
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
