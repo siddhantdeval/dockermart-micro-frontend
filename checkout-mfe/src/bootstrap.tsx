@@ -5,7 +5,7 @@ import CheckoutRoot from './CheckoutRoot';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <div style={{ fontFamily: 'sans-serif', padding: '20px' }}>
         <h1>DockerMart Checkout MFE</h1>
         <p>App running on port 3003</p>

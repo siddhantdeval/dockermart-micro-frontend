@@ -13,7 +13,7 @@ module.exports = {
     },
   },
   output: {
-    publicPath: 'auto',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -49,6 +49,7 @@ module.exports = {
       shared: {
         react: { singleton: true, eager: false, requiredVersion: '^18.0.0' },
         'react-dom': { singleton: true, eager: false, requiredVersion: '^18.0.0' },
+        'react-router-dom': { singleton: true, eager: false, requiredVersion: '^6.14.2' },
       },
     }),
     new HtmlWebpackPlugin({
