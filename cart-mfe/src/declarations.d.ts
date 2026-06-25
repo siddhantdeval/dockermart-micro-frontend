@@ -1,16 +1,14 @@
-import React from 'react';
-
 declare module 'designSystem/Button' {
   interface ButtonProps {
-    children: React.ReactNode;
+    children: import('react').ReactNode;
     onClick?: () => void;
     variant?: 'primary' | 'danger';
     disabled?: boolean;
   }
-  export const Button: React.ComponentType<ButtonProps>;
+  export const Button: import('react').ComponentType<ButtonProps>;
 }
 
 declare module 'designSystem/GlobalStyles' {
-  const GlobalStyles: React.ComponentType;
+  const GlobalStyles: import('react').ComponentType;
   export default GlobalStyles;
 }
