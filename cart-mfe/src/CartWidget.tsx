@@ -1,9 +1,24 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 
 const MiniCart = React.lazy(() => import('./MiniCart'));
 
 export default function CartWidget() {
   const [isOpen, setIsOpen] = useState(false);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const handleCartUpdate = (event: Event) => {
+      const customEvent = event as CustomEvent<{ count: number }>;
+      if (customEvent.detail && typeof customEvent.detail.count === 'number') {
+        setCount(customEvent.detail.count);
+      }
+    };
+
+    window.addEventListener('mfe:cart:updated', handleCartUpdate);
+    return () => {
+      window.removeEventListener('mfe:cart:updated', handleCartUpdate);
+    };
+  }, []);
 
   return (
     <div style={{ display: 'inline-block', position: 'relative' }}>
@@ -15,10 +30,11 @@ export default function CartWidget() {
           padding: '8px 15px', 
           borderRadius: '4px', 
           background: '#fff', 
-          cursor: 'pointer' 
+          cursor: 'pointer',
+          color: '#333'
         }}
       >
-        <span>🛒 Items: 0</span>
+        <span>🛒 Items: {count}</span>
       </button>
 
       {isOpen && (
