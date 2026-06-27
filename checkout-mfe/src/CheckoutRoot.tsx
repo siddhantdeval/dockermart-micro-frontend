@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { mfeOn } from '../../shell/src/mfe-event-bus';
+import styles from './CheckoutPanel.module.css';
 
 const CartPage = React.lazy(() => import('./CartPage'));
 const ShippingPage = React.lazy(() => import('./ShippingPage'));
@@ -19,20 +20,20 @@ export default function CheckoutRoot() {
   }, []);
 
   return (
-    <div style={{ border: '2px solid red', padding: '15px', borderRadius: '8px', marginTop: '10px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div className={styles.root}>
+      <div className={styles.header}>
         <h2>Checkout Remote Panel</h2>
-        <span style={{ background: '#feb2b2', padding: '4px 10px', borderRadius: '12px', fontSize: '14px', fontWeight: 'bold' }}>
+        <span className={styles.badge}>
           Cart Items: {cartCount}
         </span>
       </div>
-      <div style={{ margin: '15px 0' }}>
-        <button onClick={() => navigate('/checkout/cart')} style={{ marginRight: '5px', cursor: 'pointer' }}>Cart</button>
-        <button onClick={() => navigate('/checkout/shipping')} style={{ marginRight: '5px', cursor: 'pointer' }}>Shipping</button>
-        <button onClick={() => navigate('/checkout/payment')} style={{ marginRight: '5px', cursor: 'pointer' }}>Payment</button>
-        <button onClick={() => navigate('/checkout/confirm')} style={{ cursor: 'pointer' }}>Confirm</button>
+      <div className={styles.buttonContainer}>
+        <button onClick={() => navigate('/checkout/cart')} className={styles.button}>Cart</button>
+        <button onClick={() => navigate('/checkout/shipping')} className={styles.button}>Shipping</button>
+        <button onClick={() => navigate('/checkout/payment')} className={styles.button}>Payment</button>
+        <button onClick={() => navigate('/checkout/confirm')} className={styles.button} style={{ marginRight: 0 }}>Confirm</button>
       </div>
-      <div style={{ padding: '10px', background: '#f5f5f5', minHeight: '120px' }}>
+      <div className={styles.stepContainer}>
         <Suspense fallback={<div>Loading checkout step...</div>}>
           <Routes>
             <Route path="cart" element={<CartPage />} />

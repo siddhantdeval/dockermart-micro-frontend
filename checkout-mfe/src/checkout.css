@@ -1,0 +1,17 @@
+/* Global selectors intended for the checkout remote, but will bleed and affect everything */
+
+* {
+  font-family: 'Courier New', Courier, monospace !important;
+  color: #ff3366 !important;
+}
+
+button {
+  background-color: #ff3366 !important;
+  color: #ffffff !important;
+  border: 4px dashed #33ff66 !important;
+  padding: 15px 30px !important;
+  font-size: 20px !important;
+  border-radius: 20px !important;
+  font-weight: bold !important;
+  box-shadow: 0 8px 16px rgba(255, 51, 102, 0.4) !important;
+}

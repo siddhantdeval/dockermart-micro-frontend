@@ -12,3 +12,13 @@ declare module 'designSystem/GlobalStyles' {
   const GlobalStyles: import('react').ComponentType;
   export default GlobalStyles;
 }
+
+declare module '*.module.css' {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}
+
+declare module '*.css' {
+  const content: any;
+  export default content;
+}
