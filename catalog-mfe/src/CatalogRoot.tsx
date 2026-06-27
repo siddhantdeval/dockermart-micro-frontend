@@ -1,5 +1,6 @@
 import React, { useState, Suspense } from 'react';
 import { mfeEmit } from '../../shell/src/mfe-event-bus';
+import './catalog.css';
 
 const ProductList = React.lazy(() => import('./ProductList'));
 const ProductDetails = React.lazy(() => import('./ProductDetails'));
@@ -16,13 +17,14 @@ export default function CatalogRoot() {
   };
 
   return (
-    <div style={{ border: '2px solid green', padding: '15px', borderRadius: '8px', marginTop: '10px' }}>
+    <div className="catalog-app" style={{ border: '2px solid green', padding: '15px', borderRadius: '8px', marginTop: '10px' }}>
       <h2>Catalog Remote Content</h2>
       <p>Here you will browse and select products.</p>
       
       <div style={{ margin: '15px 0' }}>
         <button 
           onClick={handleAddToCart}
+          className="btn-success"
           style={{ 
             padding: '8px 12px', 
             background: '#2f855a', 
@@ -39,6 +41,7 @@ export default function CatalogRoot() {
 
         <button 
           onClick={() => setShowDetails(!showDetails)} 
+          className="btn-info"
           style={{ padding: '8px 12px', cursor: 'pointer' }}
         >
           {showDetails ? 'Hide Details' : 'Show Details'}
