@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "color-no-hex": [true, { "severity": "warning" }],
+    "declaration-property-value-disallowed-list": {
+      "color": ["/^#/", "/^rgb/"],
+      "background-color": ["/^#/", "/^rgb/"]
+    }
+  }
+}

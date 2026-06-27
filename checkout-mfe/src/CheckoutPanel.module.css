@@ -1,8 +1,8 @@
 .root {
-  border: 2px solid red;
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 10px;
+  border: 2px solid var(--color-danger);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  margin-top: var(--spacing-sm);
 }
 
 .header {
@@ -12,34 +12,21 @@
 }
 
 .badge {
-  background: #feb2b2;
-  padding: 4px 10px;
-  border-radius: 12px;
+  background: var(--color-danger-hover);
+  color: var(--color-white);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
   font-size: 14px;
   font-weight: bold;
 }
 
 .buttonContainer {
-  margin: 15px 0;
-}
-
-.button {
-  margin-right: 5px;
-  cursor: pointer;
-  padding: 6px 12px;
-  background: #e2e8f0;
-  border: 1px solid #cbd5e0;
-  border-radius: 4px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.button:hover {
-  background: #cbd5e0;
+  margin: var(--spacing-md) 0;
 }
 
 .stepContainer {
-  padding: 10px;
-  background: #f5f5f5;
+  padding: var(--spacing-sm);
+  background: var(--color-border);
   min-height: 120px;
+  border-radius: var(--radius-sm);
 }

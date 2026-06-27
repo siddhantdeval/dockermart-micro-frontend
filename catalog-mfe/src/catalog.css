@@ -1,35 +1,11 @@
-/* Aggressive global styles to simulate leakage that gets prefixed by PostCSS */
+/* Catalog styles scoped under catalog-app using design tokens */
 
 h2 {
   text-decoration: underline;
-  text-decoration-color: #2f855a !important;
+  text-decoration-color: var(--color-primary) !important;
 }
 
 button {
-  outline: 3px solid #2f855a !important;
+  outline: 3px solid var(--color-primary) !important;
   outline-offset: 4px !important;
-}
-
-.btn-success {
-  background-color: #276749 !important;
-  color: #ffffff !important;
-  border-radius: 8px !important;
-  font-weight: bold !important;
-  transition: background-color 0.2s !important;
-}
-
-.btn-success:hover {
-  background-color: #2f855a !important;
-}
-
-.btn-info {
-  background-color: #2b6cb0 !important;
-  color: #ffffff !important;
-  border-radius: 8px !important;
-  font-weight: bold !important;
-  transition: background-color 0.2s !important;
-}
-
-.btn-info:hover {
-  background-color: #3182ce !important;
 }
