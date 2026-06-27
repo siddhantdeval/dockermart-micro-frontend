@@ -2,8 +2,9 @@ declare module 'designSystem/Button' {
   interface ButtonProps {
     children: import('react').ReactNode;
     onClick?: () => void;
-    variant?: 'primary' | 'danger';
+    variant?: 'primary' | 'danger' | 'secondary';
     disabled?: boolean;
+    style?: import('react').CSSProperties;
   }
   export const Button: import('react').ComponentType<ButtonProps>;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { mfeOn } from '../../shell/src/mfe-event-bus';
+import { Button } from 'designSystem/Button';
 import styles from './CheckoutPanel.module.css';
 
 const CartPage = React.lazy(() => import('./CartPage'));
@@ -28,10 +29,10 @@ export default function CheckoutRoot() {
         </span>
       </div>
       <div className={styles.buttonContainer}>
-        <button onClick={() => navigate('/checkout/cart')} className={styles.button}>Cart</button>
-        <button onClick={() => navigate('/checkout/shipping')} className={styles.button}>Shipping</button>
-        <button onClick={() => navigate('/checkout/payment')} className={styles.button}>Payment</button>
-        <button onClick={() => navigate('/checkout/confirm')} className={styles.button} style={{ marginRight: 0 }}>Confirm</button>
+        <Button onClick={() => navigate('/checkout/cart')} variant="secondary" style={{ marginRight: '5px' }}>Cart</Button>
+        <Button onClick={() => navigate('/checkout/shipping')} variant="secondary" style={{ marginRight: '5px' }}>Shipping</Button>
+        <Button onClick={() => navigate('/checkout/payment')} variant="secondary" style={{ marginRight: '5px' }}>Payment</Button>
+        <Button onClick={() => navigate('/checkout/confirm')} variant="primary" style={{ marginRight: 0 }}>Confirm</Button>
       </div>
       <div className={styles.stepContainer}>
         <Suspense fallback={<div>Loading checkout step...</div>}>

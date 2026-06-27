@@ -6,6 +6,7 @@ import { GlobalNav } from './GlobalNav';
 const CatalogApp = React.lazy(() => import('catalogApp/CatalogRoot'));
 const CheckoutApp = React.lazy(() => import('checkoutApp/CheckoutRoot'));
 const AccountApp = React.lazy(() => import('accountApp/AccountRoot'));
+const GlobalStyles = React.lazy(() => import('designSystem/GlobalStyles'));
 
 class RemoteErrorBoundary extends React.Component<
   { name: string; children: React.ReactNode },
@@ -70,6 +71,9 @@ export default function App() {
 
   return (
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <Suspense fallback={null}>
+        <GlobalStyles />
+      </Suspense>
       <GlobalNav />
       <div style={{ padding: '24px', fontFamily: 'system-ui, sans-serif' }}>
         <Routes>

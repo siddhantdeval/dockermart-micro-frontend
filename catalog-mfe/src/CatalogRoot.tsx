@@ -1,5 +1,6 @@
 import React, { useState, Suspense } from 'react';
 import { mfeEmit } from '../../shell/src/mfe-event-bus';
+import { Button } from 'designSystem/Button';
 import './catalog.css';
 
 const ProductList = React.lazy(() => import('./ProductList'));
@@ -22,30 +23,20 @@ export default function CatalogRoot() {
       <p>Here you will browse and select products.</p>
       
       <div style={{ margin: '15px 0' }}>
-        <button 
+        <Button 
           onClick={handleAddToCart}
-          className="btn-success"
-          style={{ 
-            padding: '8px 12px', 
-            background: '#2f855a', 
-            color: '#fff', 
-            border: 'none', 
-            borderRadius: '4px', 
-            cursor: 'pointer', 
-            marginRight: '10px',
-            fontWeight: 500
-          }}
+          variant="primary"
+          style={{ marginRight: '10px' }}
         >
           ➕ Add to Cart
-        </button>
+        </Button>
 
-        <button 
+        <Button 
           onClick={() => setShowDetails(!showDetails)} 
-          className="btn-info"
-          style={{ padding: '8px 12px', cursor: 'pointer' }}
+          variant="secondary"
         >
           {showDetails ? 'Hide Details' : 'Show Details'}
-        </button>
+        </Button>
       </div>
 
       <Suspense fallback={<div>Loading Product List...</div>}>

@@ -56,6 +56,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'checkoutApp',
       filename: 'remoteEntry.js',
+      remotes: {
+        designSystem: 'designSystem@http://localhost:3005/remoteEntry.js',
+      },
       exposes: {
         './CheckoutRoot': './src/CheckoutRoot',
       },
