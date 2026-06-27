@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { mfeOn } from '../../shell/src/mfe-event-bus';
+import { CartEventBus } from '../../shell/src/mfe-event-bus';
 import { Button } from 'designSystem/Button';
 import styles from './CheckoutPanel.module.css';
 
@@ -15,7 +15,7 @@ export default function CheckoutRoot() {
 
   useEffect(() => {
     // Listen to namespaced event on mounting (hydrates instantly from last-state cache)
-    return mfeOn<{ count: number }>('mfe:cart:updated', (detail) => {
+    return CartEventBus.onUpdated((detail) => {
       setCartCount(detail.count);
     });
   }, []);

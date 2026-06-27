@@ -1,5 +1,6 @@
-import React, { useState, Suspense } from 'react';
-import { mfeEmit } from '../../shell/src/mfe-event-bus';
+import React, { useState, useEffect, Suspense } from 'react';
+import { AuthEventBus, CartEventBus } from '../../shell/src/mfe-event-bus';
+import { User } from '../../shell/src/auth';
 import { Button } from 'designSystem/Button';
 import './catalog.css';
 
@@ -9,17 +10,29 @@ const ProductDetails = React.lazy(() => import('./ProductDetails'));
 export default function CatalogRoot() {
   const [showDetails, setShowDetails] = useState(false);
   const [localCartCount, setLocalCartCount] = useState(0);
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    return AuthEventBus.onReady((u) => setUser(u));
+  }, []);
 
   const handleAddToCart = () => {
     const nextCount = localCartCount + 1;
     setLocalCartCount(nextCount);
-    // Emit namespaced event to notify other MFEs (like Cart MFE)
-    mfeEmit<{ count: number }>('mfe:cart:updated', { count: nextCount });
+    // Emit namespaced event using CartEventBus concern class
+    CartEventBus.emitUpdated(nextCount);
   };
 
   return (
     <div className="catalog-app" style={{ border: '2px solid green', padding: '15px', borderRadius: '8px', marginTop: '10px' }}>
-      <h2>Catalog Remote Content</h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2>Catalog Remote Content</h2>
+        {user && (
+          <span style={{ fontSize: '14px', background: '#e2e8f0', padding: '4px 8px', borderRadius: '4px', fontWeight: 500 }}>
+            👤 {user.name} ({user.roles.join(', ')})
+          </span>
+        )}
+      </div>
       <p>Here you will browse and select products.</p>
       
       <div style={{ margin: '15px 0' }}>

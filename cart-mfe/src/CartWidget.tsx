@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
-import { mfeOn } from '../../shell/src/mfe-event-bus';
+import { CartEventBus } from '../../shell/src/mfe-event-bus';
 
 const MiniCart = React.lazy(() => import('./MiniCart'));
 
@@ -9,7 +9,7 @@ export default function CartWidget() {
 
   useEffect(() => {
     // Listen to Namespaced cart update event via event bus and return cleanup
-    return mfeOn<{ count: number }>('mfe:cart:updated', (detail) => {
+    return CartEventBus.onUpdated((detail) => {
       setCount(detail.count);
     });
   }, []);

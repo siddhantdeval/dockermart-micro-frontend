@@ -5,7 +5,10 @@ import { GlobalNav } from './GlobalNav';
 
 const CatalogApp = React.lazy(() => import('catalogApp/CatalogRoot'));
 const CheckoutApp = React.lazy(() => import('checkoutApp/CheckoutRoot'));
-const AccountApp = React.lazy(() => import('accountApp/AccountRoot'));
+const AccountApp = React.lazy(async () => {
+  await new Promise((resolve) => setTimeout(resolve, 600));
+  return import('accountApp/AccountRoot');
+});
 const GlobalStyles = React.lazy(() => import('designSystem/GlobalStyles'));
 
 class RemoteErrorBoundary extends React.Component<
