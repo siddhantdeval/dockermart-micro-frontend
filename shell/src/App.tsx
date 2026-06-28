@@ -80,9 +80,9 @@ export default function App() {
       <GlobalNav />
       <div style={{ padding: '24px', fontFamily: 'system-ui, sans-serif' }}>
         <Routes>
-          <Route path="/catalog/*" element={<RemoteMount name="Catalog"><CatalogApp /></RemoteMount>} />
-          <Route path="/checkout/*" element={<RemoteMount name="Checkout"><CheckoutApp /></RemoteMount>} />
-          <Route path="/account/*" element={<RemoteMount name="Account"><AccountApp /></RemoteMount>} />
+          <Route path="/catalog/*" element={<RemoteMount name="Catalog" key="catalog"><CatalogApp /></RemoteMount>} />
+          <Route path="/checkout/*" element={<RemoteMount name="Checkout" key="checkout"><CheckoutApp /></RemoteMount>} />
+          <Route path="/account/*" element={<RemoteMount name="Account" key="account"><AccountApp /></RemoteMount>} />
           <Route path="/" element={<Navigate to="/catalog" replace />} />
         </Routes>
       </div>
