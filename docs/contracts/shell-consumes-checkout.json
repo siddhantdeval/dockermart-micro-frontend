@@ -1,0 +1,10 @@
+{
+  "consumer": "shell",
+  "provider": "checkoutApp",
+  "version": "1",
+  "interactions": [
+    { "type": "exposes",     "module": "./CheckoutRoot" },
+    { "type": "fires_event", "event": "mfe:checkout:complete", "detail_keys": ["orderId", "total"] },
+    { "type": "fires_event", "event": "mfe:checkout:abandoned", "detail_keys": ["cartId"] }
+  ]
+}

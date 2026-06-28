@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack --mode production",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:contract": "node ../scripts/verify-contract.js ../docs/contracts/shell-consumes-cart.json"
   },
   "dependencies": {
     "react": "^18.2.0",

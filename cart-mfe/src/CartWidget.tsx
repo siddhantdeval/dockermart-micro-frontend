@@ -1,6 +1,9 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { CartEventBus } from '../../shell/src/mfe-event-bus';
 
+// CONTRACT SPECIFICATION:
+// Provider for: mfe:cart:updated event
+// Fired event details: count, items
 const MiniCart = React.lazy(() => import('./MiniCart'));
 
 export default function CartWidget() {

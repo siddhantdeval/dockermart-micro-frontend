@@ -1,0 +1,9 @@
+{
+  "consumer": "shell",
+  "provider": "cartApp",
+  "version": "1",
+  "interactions": [
+    { "type": "exposes",     "module": "./CartWidget" },
+    { "type": "fires_event", "event": "mfe:cart:updated", "detail_keys": ["count", "items"] }
+  ]
+}
